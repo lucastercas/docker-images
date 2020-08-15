@@ -1,7 +1,7 @@
 # Quick reference
 
 - **Maintained by**: []()
-- **Where to get help**: []()
+- **Where to get help**: [Helm Oficial Documentaion](https://helm.sh/docs/)
 
 # Supported tags and respective `Dockerfile` links
 
