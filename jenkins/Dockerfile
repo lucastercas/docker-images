@@ -26,6 +26,7 @@ RUN /usr/local/bin/install-plugins.sh \
   gitlab-plugin \
   sonar
 
+# Variables to connect to docker engine on another machine
 ARG DOCKER_HOST
 ENV DOCKER_HOST ${DOCKER_HOST}
 ARG DOCKER_CERT_PATH
@@ -33,4 +34,5 @@ ENV DOCKER_CERT_PATH ${DOCKER_CERT_PATH}
 ARG DOCKER_TLS_VERIFY
 ENV DOCKER_TLS_VERIFY ${DOCKER_TLS_VERIFY}
 
+EXPOSE 8080 50000
 USER jenkins:jenkins

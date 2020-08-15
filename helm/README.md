@@ -1,21 +1,19 @@
-# Helm Docker Image
-
-## Quick reference
+# Quick reference
 
 - **Maintained by**: []()
 - **Where to get help**: []()
 
-## Supported tags and respective `Dockerfile` links
+# Supported tags and respective `Dockerfile` links
 
-- [`latest`]()
+- [`3`, `latest`]()
 
-## What is `helm`?
+# What is `helm`?
 
 [Helm](https://helm.sh/) is a package manager for kubernetes,
 which provides an easy way to find and share software
 to be installed on a k8s cluster.
 
-## How to use this image
+# How to use this image
 
 The default workdir is `/app`, so any command will execute there, unless
 you specify another working directory.
