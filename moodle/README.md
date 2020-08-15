@@ -65,54 +65,20 @@ When you start this `moodle` image, you have to provide certain environment vari
 
 ## Moodle configuration variables
 
-### `MOODLE_ADMINUSER`
-
-Optional variable, sets the login to use for the `administrator` account, default is `admin_user`.
-
-### `MOODLE_ADMINPASS`
-
-Password for the administrator account, there is no default.
-
-### `MOODLE_ADMINMAIL`
-
-Optional variable, sets the email of the administrator user, default is `mail@email.com`.
-
-### `MOODLE_NAME`
-
-Optional variable, sets the name of the Moodle instance, default is `moodle`.
-
-### `MOODLE_WWWROOT`
-
-Optional variable, location of the web site, default is `http://localhost`.
-
-### `MOODLE_DIR`
-
-Optional variable, location of Moodle, default is `/var/www/html`.
-
-### `MOODLE_DATADIR`
-
-Optional variables, location of moodledata, default is `/var/www/moodledata`.
+1. `MOODLE_ADMINUSER`: Optional variable, sets the login to use for the `administrator` account, default is _admin_user_.
+2. `MOODLE_ADMINPASS`: Password for the administrator account, there is no default.
+3. `MOODLE_ADMINMAIL`: Optional variable, sets the email of the administrator user, default is `mail@email.com`.
+4. `MOODLE_NAME`: Optional variable, sets the name of the Moodle instance, default is `moodle`.
+5. `MOODLE_WWWROOT`: Optional variable, location of the web site, default is `http://localhost`.
+6. `MOODLE_DIR`: Optional variable, location of Moodle, default is `/var/www/html`.
+7. `MOODLE_DATADIR`: Optional variables, location of moodledata, default is `/var/www/moodledata`.
 
 ## Database configuration variables
 
-### `DB_HOST`
-
-Host of the database.
-
-### `DB_USER`
-
-User of database.
-
-### `DB_PASS`
-
-Password of `DB_USER`.
-
-### `DB_NAME`
-
-Optional variable, name of database that this instance of Moodle will use, default is `moodle`.
-
-### `DB_DRIVER`
-
-Type of driver, this can be `pgsql`, `mariadb`, `mysqli`, `sqlsrv` or `oci`. Depends on the type of the database on `DB_HOST`
+1. `DB_HOST`: Host of the database.
+2. `DB_USER`: User of database.
+3. `DB_PASS`: Password of `DB_USER`.
+4. `DB_NAME`: Optional variable, name of database that this instance of Moodle will use, default is _moodle_.
+5. `DB_DRIVER`: Type of driver, it can be _pgsql_, _mariadb_, _mysqli_, _sqlsrv_ or _oci_, according to the [Moodle documentation](). Depends on the type of the database on `DB_HOST`
 
 # Extending this image
