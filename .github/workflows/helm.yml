@@ -3,7 +3,7 @@ name: Helm Image Upload
 on:
   push:
     paths:
-      - 'ansible/**'
+      - 'helm/**'
 jobs:
   push-image:
     runs-on: ubuntu-20.04

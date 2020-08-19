@@ -18,7 +18,7 @@ LABEL \
   org.lucastercas.helm.image.licenses="" \
   org.lucastercas.helm.image.source="" \
   org.lucastercas.helm.image.url="" \
-  org.lucastercas.helm.image.documentation=""
+  org.lucastercas.helm.image.documentation="htps://github.com/lucastercas/docker-images"
 
 ENTRYPOINT [ "helm" ]
 CMD [ "version" ]
