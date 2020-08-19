@@ -1,11 +1,13 @@
 ---
-name: Image Upload
+name: Ansible Image Upload
 on:
   push:
     branches:
       - master
+    paths:
+      - helm/**
 jobs:
-  latest:
+  push-image:
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout
@@ -16,7 +18,8 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
       - name: Build
+        working-directory: ./helm
         run: DOCKER_BUILDKIT=1 make build
       - name: Push
+        working-directory: ./helm
         run: make push
-
