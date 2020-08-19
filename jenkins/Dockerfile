@@ -34,5 +34,16 @@ ENV DOCKER_CERT_PATH ${DOCKER_CERT_PATH}
 ARG DOCKER_TLS_VERIFY
 ENV DOCKER_TLS_VERIFY ${DOCKER_TLS_VERIFY}
 
+LABEL \
+  org.lucastercas.jenkins.image.authors="Lucas de Macedo Terças <lucasmtercas@gmail.com>" \
+  org.lucastercas.jenkins.image.maintainers="Lucas de Macedo Terças <lucasmtercas@gmail.com>" \
+  org.lucastercas.jenkins.image.version=${jenkins_vesion} \
+  org.lucastercas.jenkins.image.title="lucastercas/jenkins" \
+  org.lucastercas.jenkins.image.description="Helm application" \
+  org.lucastercas.jenkins.image.licenses="" \
+  org.lucastercas.jenkins.image.source="" \
+  org.lucastercas.jenkins.image.url="" \
+  org.lucastercas.jenkins.image.documentation="htps://github.com/lucastercas/docker-images"
+
 EXPOSE 8080 50000
 USER jenkins:jenkins
