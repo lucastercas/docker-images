@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - master
-    paths:
-      - helm/**
 jobs:
   push-image:
     runs-on: ubuntu-20.04
