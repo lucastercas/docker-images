@@ -1,19 +1,22 @@
 FROM debian
-
-LABEL \
-  org.ansible.lucastercas.image.autor="Lucas Terças <lucasmtercas@gmail.com>" \
-  org.ansible.lucastercas.image.mantainer="Lucas Terças <lucasmtercas@gmail.com>"
-
+WORKDIR /opt/app
 RUN apt-get update -y && \
   apt-get install -y --no-install-recommends\
   python3 \
   sudo \
   ansible \
   sshpass \
+  git \
   openssh-client && \
-  apt-get purge -y --auto-remove && \
-  apt-get clean && \
   rm -rf /var/lib/apt/lists*
-  
 
+LABEL \
+  org.lucastercas.ansible.image.authors="Lucas Terças <lucasmtercas@gmail.com>" \
+  org.lucastercas.ansible.image.maintainers="Lucas Terças <lucasmtercas@gmail.com>" \
+  org.lucastercas.ansible.image.description="Ansible application" \
+  org.lucastercas.ansible.image.title="lucastercas/ansible" \
+  org.lucastercas.ansible.image.licenses="" \
+  org.lucastercas.ansible.image.source="" \
+  org.lucastercas.ansible.image.url=""
+  
 CMD [ "ansible-playbook", "--version" ]
