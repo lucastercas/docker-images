@@ -6,7 +6,7 @@ from airflow.operators.bash_operator import BashOperator
 from airflow.utils.dates import days_ago
 
 default_args = {
-    'owner': 'lucasterca',
+    'owner': 'lucastercas',
     'depends_on_past': False,
     'start_date': days_ago(2),
     'retries': 2,
@@ -14,22 +14,22 @@ default_args = {
 }
 
 dag = DAG(
-    'test-dag',
+    'test-dag-3',
     default_args=default_args,
     description='A test DAG',
-    schedule_interval='0 1 * * *',
+    schedule_interval='*/1 * * * *',
     #catchup=True
 )
 
 t1 = BashOperator(
-    task_id='test-dag-date',
+    task_id='test-dag-date-3',
     bash_command='date',
     dag=dag
 )
 
 t2 = BashOperator(
-    task_id='test-dag-echo',
-    bash_command='echo bar',
+    task_id='test-dag-echo-3',
+    bash_command='echo foo',
     retries=3,
     dag=dag
 )
