@@ -1,9 +1,9 @@
 ---
-name: Kubectl Docker Image Upload
+name: Airflow Docker Image Upload
 on:
   push:
     paths:
-      - 'kubectl/**'
+      - 'airflow/**'
 jobs:
   push-image:
     runs-on: ubuntu-20.04
@@ -16,8 +16,8 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
       - name: Build
-        working-directory: ./kubectl
+        working-directory: ./airflow
         run: DOCKER_BUILDKIT=1 make build
       - name: Push
-        working-directory: ./kubectl
+        working-directory: ./airflow
         run: make push

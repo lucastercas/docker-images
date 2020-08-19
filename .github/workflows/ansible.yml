@@ -1,5 +1,5 @@
 ---
-name: Ansible Image Upload
+name: Ansible Docker Image Upload
 on:
   push:
     paths:
