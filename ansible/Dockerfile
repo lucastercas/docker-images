@@ -13,10 +13,10 @@ RUN apt-get update -y && \
 LABEL \
   org.lucastercas.ansible.image.authors="Lucas Terças <lucasmtercas@gmail.com>" \
   org.lucastercas.ansible.image.maintainers="Lucas Terças <lucasmtercas@gmail.com>" \
-  org.lucastercas.ansible.image.description="Ansible application" \
   org.lucastercas.ansible.image.title="lucastercas/ansible" \
+  org.lucastercas.ansible.image.description="Ansible application" \
   org.lucastercas.ansible.image.licenses="" \
   org.lucastercas.ansible.image.source="" \
-  org.lucastercas.ansible.image.url=""
+  org.lucastercas.ansible.image.url="https://github.com/lucastercas/docker-images"
   
 CMD [ "ansible-playbook", "--version" ]
