@@ -6,5 +6,5 @@ ARG POSTGRES_USER="airflow"
 ARG POSTGRES_PASSWORD
 ARG POSTGRES_DB="airflow"
 
-COPY ./dags /usr/local/airflow/dags
-COPY ./requirements.txt ./
+COPY ./files/dags /usr/local/airflow/dags
+COPY ./files/requirements.txt ./

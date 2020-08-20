@@ -16,9 +16,9 @@ LABEL \
   org.lucastercas.helm.image.title="lucastercas/helm" \
   org.lucastercas.helm.image.description="Helm application" \
   org.lucastercas.helm.image.licenses="" \
-  org.lucastercas.helm.image.source="" \
-  org.lucastercas.helm.image.url="" \
-  org.lucastercas.helm.image.documentation="htps://github.com/lucastercas/docker-images"
+  org.lucastercas.helm.image.source="htps://github.com/lucastercas/docker-images/tree/master/helm" \
+  org.lucastercas.helm.image.url="https://hub.docker.com/r/lucastercas/helm" \
+  org.lucastercas.helm.image.documentation="htps://github.com/lucastercas/docker-images/tree/master/helm"
 
 ENTRYPOINT [ "helm" ]
 CMD [ "version" ]

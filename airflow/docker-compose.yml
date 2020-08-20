@@ -15,7 +15,8 @@ services:
       POSTGRES_PASSWORD: test_password
       POSTGRES_DB: airflow
     volumes:
-      - ./dags:/usr/local/airflow/dags
+      - ./files/dags:/usr/local/airflow/dags
+      - ./files/requirements.txt:/
     healthcheck:
       test: ["CMD-SHELL", "[ -f /usr/local/airflow/airflow-webserver.pid ]"]
       interval: 30s
@@ -26,6 +27,6 @@ services:
     image: postgres:13
     restart: always
     environment:
-      POSTGRES_PASSWORD: test_password
       POSTGRES_USER: test_user
+      POSTGRES_PASSWORD: test_password
       POSTGRES_DB: airflow
