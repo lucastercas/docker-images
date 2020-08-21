@@ -4,6 +4,7 @@ RUN apt-get update -y && \
   apt-get install -y --no-install-recommends\
   python3 \
   python3-pip \
+  python3-setuptools \
   sudo \
   ansible \
   sshpass \
@@ -11,7 +12,7 @@ RUN apt-get update -y && \
   openssh-client && \
   rm -rf /var/lib/apt/lists*
 
-RUN pip3 install docker
+RUN pip3 install docker ansible-lint
 
 LABEL \
   org.lucastercas.ansible.image.authors="Lucas Terças <lucasmtercas@gmail.com>" \
