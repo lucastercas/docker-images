@@ -9,14 +9,19 @@ services:
     ports:
       - 8080:8080
     environment:
+      AIRFLOW__SCHEDULER__MIN_FILE_PROCESS_INTERVAL: 60
+      AIRFLOW__SCHEDULER__DAG_DIR_LIST_INTERVAL: 10
+      AIRFLOW__CORE__EXECUTOR: "LocalExecutor"
       POSTGRES_HOST: postgres
       POSTGRES_PORT: 5432
-      POSTGRES_USER: test_user
-      POSTGRES_PASSWORD: test_password
+      POSTGRES_USER: airflow_user
+      POSTGRES_PASSWORD: airflow_password
       POSTGRES_DB: airflow
+      AIRFLOW_CONN_MY_CONN: "mssql://user:pwd@host:port/db"
     volumes:
       - ./files/dags:/usr/local/airflow/dags
-      - ./files/requirements.txt:/
+      - ./files/requirements.txt:/requirements.txt
+      - ./files/tests:/opt/tests
     healthcheck:
       test: ["CMD-SHELL", "[ -f /usr/local/airflow/airflow-webserver.pid ]"]
       interval: 30s
@@ -27,6 +32,6 @@ services:
     image: postgres:13
     restart: always
     environment:
-      POSTGRES_USER: test_user
-      POSTGRES_PASSWORD: test_password
+      POSTGRES_USER: airflow_user
+      POSTGRES_PASSWORD: airflow_password
       POSTGRES_DB: airflow
