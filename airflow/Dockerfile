@@ -2,13 +2,12 @@ FROM puckel/docker-airflow
 
 USER root:root
 
-RUN apt update &&  apt install -y unixodbc-dev gnupg
+RUN mkdir -p /usr/share/man/man1 &&  \
+    apt update && apt install -y unixodbc-dev gnupg openjdk-11-jdk
 
-RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
-
-RUN curl https://packages.microsoft.com/config/debian/10/prod.list > /etc/apt/sources.list.d/mssql-release.list
-
-RUN apt update && ACCEPT_EULA=Y apt-get install -y msodbcsql17
+RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - && \
+    curl https://packages.microsoft.com/config/debian/10/prod.list > /etc/apt/sources.list.d/mssql-release.list && \
+    apt update && ACCEPT_EULA=Y apt-get install -y msodbcsql17
 
 ENV POSTGRES_HOST "postgres"
 ENV POSTGRES_PORT "5432"
