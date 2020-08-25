@@ -14,24 +14,33 @@ services:
       AIRFLOW__CORE__EXECUTOR: "LocalExecutor"
       POSTGRES_HOST: postgres
       POSTGRES_PORT: 5432
-      POSTGRES_USER: airflow_user
-      POSTGRES_PASSWORD: airflow_password
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: airflow
       POSTGRES_DB: airflow
       AIRFLOW_CONN_MY_CONN: "mssql://user:pwd@host:port/db"
     volumes:
       - ./files/dags:/usr/local/airflow/dags
       - ./files/requirements.txt:/requirements.txt
-      - ./files/tests:/opt/tests
+      - ./files/tests:/usr/local/airflow/tests
+      - ./files/odbcinst.ini:/etc/odbcinst.ini
     healthcheck:
       test: ["CMD-SHELL", "[ -f /usr/local/airflow/airflow-webserver.pid ]"]
       interval: 30s
       timeout: 30s
       retries: 3
 
+  mssql-server:
+    image: mcr.microsoft.com/mssql/server:2017-latest
+    ports:
+      - 1433:1433
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=t3st_Password
+
   postgres:
     image: postgres:13
     restart: always
     environment:
-      POSTGRES_USER: airflow_user
-      POSTGRES_PASSWORD: airflow_password
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: airflow
       POSTGRES_DB: airflow

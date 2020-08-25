@@ -3,8 +3,15 @@ FROM puckel/docker-airflow
 USER root:root
 
 RUN mkdir -p /usr/share/man/man1 && \
-  apt-get update && \
-  apt-get install -y --no-install-recommends freetds-dev freetds-bin unixodbc-dev tdsodbc unixodbc gnupg openjdk-11-jdk
+    apt-get update && \
+    apt-get install -y --no-install-recommends \
+    freetds-dev \
+    freetds-bin \
+    unixodbc-dev \
+    tdsodbc \
+    unixodbc \
+    gnupg \
+    openjdk-11-jdk
 
 RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - && \
     curl https://packages.microsoft.com/config/debian/10/prod.list > /etc/apt/sources.list.d/mssql-release.list && \
