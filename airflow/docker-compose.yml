@@ -1,41 +1,33 @@
 version: "3.8"
 
 services:
-  airflow:
-    image: lucastercas/airflow:dev
-    restart: always
+  scheduler:
+    image: lucastercas/airflow:scheduler
     build:
-      context: .
+      context: scheduler
+    restart: always
+    environment:
+      DB_HOST: "postgres"
+      DB_PORT: "5432"
+      DB_USER: "airflow"
+      DB_PASSWORD: "airflow"
+      DB_NAME: "airflow"
+      AIRFLOW__CORE__EXECUTOR: "LocalExecutor"
+
+  webserver:
+    image: lucastercas/airflow:webserver
+    build:
+      context: webserver
+    restart: always
+    environment:
+      DB_HOST: "postgres"
+      DB_PORT: "5432"
+      DB_USER: "airflow"
+      DB_PASSWORD: "airflow"
+      DB_NAME: "airflow"
+      AIRFLOW__CORE__EXECUTOR: "LocalExecutor"
     ports:
       - 8080:8080
-    environment:
-      AIRFLOW__SCHEDULER__MIN_FILE_PROCESS_INTERVAL: 60
-      AIRFLOW__SCHEDULER__DAG_DIR_LIST_INTERVAL: 10
-      AIRFLOW__CORE__EXECUTOR: "LocalExecutor"
-      POSTGRES_HOST: postgres
-      POSTGRES_PORT: 5432
-      POSTGRES_USER: airflow
-      POSTGRES_PASSWORD: airflow
-      POSTGRES_DB: airflow
-      AIRFLOW_CONN_MY_CONN: "mssql://user:pwd@host:port/db"
-    volumes:
-      - ./files/dags:/usr/local/airflow/dags
-      - ./files/requirements.txt:/requirements.txt
-      - ./files/tests:/usr/local/airflow/tests
-      - ./files/odbcinst.ini:/etc/odbcinst.ini
-    healthcheck:
-      test: ["CMD-SHELL", "[ -f /usr/local/airflow/airflow-webserver.pid ]"]
-      interval: 30s
-      timeout: 30s
-      retries: 3
-
-  mssql-server:
-    image: mcr.microsoft.com/mssql/server:2017-latest
-    ports:
-      - 1433:1433
-    environment:
-      - ACCEPT_EULA=Y
-      - SA_PASSWORD=t3st_Password
 
   postgres:
     image: postgres:13
@@ -44,3 +36,37 @@ services:
       POSTGRES_USER: airflow
       POSTGRES_PASSWORD: airflow
       POSTGRES_DB: airflow
+  # airflow:
+  #   image: lucastercas/airflow:dev
+  #   restart: always
+  #   build:
+  #     context: .
+  #   ports:
+  #     - 8080:8080
+  #   environment:
+  #     AIRFLOW__SCHEDULER__MIN_FILE_PROCESS_INTERVAL: 60
+  #     AIRFLOW__SCHEDULER__DAG_DIR_LIST_INTERVAL: 10
+  #     AIRFLOW__CORE__EXECUTOR: "LocalExecutor"
+  #     POSTGRES_HOST: postgres
+  #     POSTGRES_PORT: 5432
+  #     POSTGRES_USER: airflow
+  #     POSTGRES_PASSWORD: airflow
+  #     POSTGRES_DB: airflow
+  #     AIRFLOW_CONN_MY_CONN: "mssql://user:pwd@host:port/db"
+  #   volumes:
+  #     - ./files/dags:/usr/local/airflow/dags
+  #     - ./files/requirements.txt:/requirements.txt
+  #     - ./files/tests:/usr/local/airflow/tests
+  #     - ./files/odbcinst.ini:/etc/odbcinst.ini
+  #   healthcheck:
+  #     test: ["CMD-SHELL", "[ -f /usr/local/airflow/airflow-webserver.pid ]"]
+  #     interval: 30s
+  #     timeout: 30s
+  #     retries: 3
+  # mssql-server:
+  #   image: mcr.microsoft.com/mssql/server:2017-latest
+  #   ports:
+  #     - 1433:1433
+  #   environment:
+  #     - ACCEPT_EULA=Y
+  #     - SA_PASSWORD=t3st_Password
