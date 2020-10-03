@@ -1,5 +1,0 @@
-{
-  "python.linting.pylintEnabled": true,
-  "python.linting.enabled": true,
-  "python.pythonPath": "/home/lucastercas/workspace/projets/docker-images/venv/bin/python3"
-}
