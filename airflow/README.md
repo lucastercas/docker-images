@@ -1,3 +1,4 @@
 # AirFlow
 
-This repository contains...
+This repository contains the code to build a AirFlow
+Docker Image
