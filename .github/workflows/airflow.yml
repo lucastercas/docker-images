@@ -23,7 +23,7 @@ jobs:
   #       working-directory: ./airflow
   #       run: make push
   update-readme:
-    runs: ubuntu-20.04
+    runs-on: ubuntu-20.04
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
