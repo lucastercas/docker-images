@@ -1,23 +1,36 @@
 ---
 name: Airflow Docker Image Upload
+
 on:
   push:
     paths:
       - 'airflow/**'
 jobs:
-  push-image:
-    runs-on: ubuntu-20.04
+  # push-image:
+  #   runs-on: ubuntu-20.04
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v2
+  #     - name: Docker Login
+  #       uses: azure/docker-login@v1
+  #       with:
+  #         username: ${{ secrets.DOCKER_USERNAME }}
+  #         password: ${{ secrets.DOCKER_PASSWORD }}
+  #     - name: Build
+  #       working-directory: ./airflow
+  #       run: DOCKER_BUILDKIT=1 make build
+  #     - name: Push
+  #       working-directory: ./airflow
+  #       run: make push
+  update-readme:
+    runs: ubuntu-20.04
     steps:
-      - name: Checkout
+      - name: Checkout Code
         uses: actions/checkout@v2
-      - name: Docker Login
-        uses: azure/docker-login@v1
+      - name: Sync ReadMe with Docker Hub
+        uses: ms-jpq/sync-dockerhub-readme@v1
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-      - name: Build
-        working-directory: ./airflow
-        run: DOCKER_BUILDKIT=1 make build
-      - name: Push
-        working-directory: ./airflow
-        run: make push
+          repository: ${{ secrets.DOCKER_USERNAME }}/airflow
+          readme: "./airflow/README.md"
