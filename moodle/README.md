@@ -40,12 +40,12 @@ services:
     image: lucastercas/moodle:v3.8.3
     ports:
       - "80:80"
-    environments:
+    environment:
       DB_USER: db_user
-      DB_PASS: db_pass
+      DB_PASSWORD: db_pass
       DB_HOST: db
       DB_DRIVER: pgsql
-      MOODLE_ADMINPASS: admin_pass
+      MOODLE_ADMIN_PASSWORD: admin_pass
 
   db:
     image: postgres:13-alpine
@@ -65,9 +65,9 @@ When you start this `moodle` image, you have to provide certain environment vari
 
 ## Moodle configuration variables
 
-1. `MOODLE_ADMINUSER`: Optional variable, sets the login to use for the `administrator` account, default is _admin_user_.
-2. `MOODLE_ADMINPASS`: Password for the administrator account, there is no default.
-3. `MOODLE_ADMINMAIL`: Optional variable, sets the email of the administrator user, default is `mail@email.com`.
+1. `MOODLE_ADMIN_USER`: Optional variable, sets the login to use for the `administrator` account, default is _admin_user_.
+2. `MOODLE_ADMIN_PASSWORD`: Password for the administrator account, there is no default.
+3. `MOODLE_ADMIN_MAIL`: Optional variable, sets the email of the administrator user, default is `mail@email.com`.
 4. `MOODLE_NAME`: Optional variable, sets the name of the Moodle instance, default is `moodle`.
 5. `MOODLE_WWWROOT`: Optional variable, location of the web site, default is `http://localhost`.
 6. `MOODLE_DIR`: Optional variable, location of Moodle, default is `/var/www/html`.
@@ -77,7 +77,7 @@ When you start this `moodle` image, you have to provide certain environment vari
 
 1. `DB_HOST`: Host of the database.
 2. `DB_USER`: User of database.
-3. `DB_PASS`: Password of `DB_USER`.
+3. `DB_PASSWORD`: Password of `DB_USER`.
 4. `DB_NAME`: Optional variable, name of database that this instance of Moodle will use, default is _moodle_.
 5. `DB_DRIVER`: Type of driver, it can be _pgsql_, _mariadb_, _mysqli_, _sqlsrv_ or _oci_, according to the [Moodle documentation](). Depends on the type of the database on `DB_HOST`
 
